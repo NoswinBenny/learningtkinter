@@ -1,6 +1,6 @@
 import tkinter
 from tkinter import StringVar, ttk
-from typing import Text
+
 
 root = tkinter.Tk()
 
