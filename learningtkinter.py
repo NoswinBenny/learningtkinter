@@ -1,28 +1,26 @@
-import tkinter
+import tkinter as tk
 from tkinter import StringVar, ttk
 
 
-root = tkinter.Tk()
+root = tk.Tk()
+uiLabelFrame = ttk.LabelFrame(master=root, text='Learning TKinter')
 
-name = tkinter.StringVar()
-name_entry = ttk.Entry(textvariable=name)
-
-display_name = StringVar()
-display_name.set('your name is')
-
-label = ttk.Label(root, textvariable=name)
+name = StringVar()
+name_label = ttk.Label(uiLabelFrame, text='name')
+name_entry = ttk.Entry(uiLabelFrame, textvariable=name)
 
 
 def add():
     global name    
-    name = display_name.set(f'Your name is {name_entry.get()}')
-btn = ttk.Button(text='Submit', command=add)
-label.pack()
+    userName = name_label.config(text=f'Your name is {name.get().strip()}')
+    name_entry.delete(0, 'end')
 
 
+btn = ttk.Button(uiLabelFrame, text='Submit', command=add)
 
-name_entry.pack()
-btn.pack()
+list(map(lambda x: x.pack(padx=5, pady=5), [uiLabelFrame, name_label, name_entry, btn]))[:]
+
 root.minsize(400, 400)
 root.mainloop()
 
+# This comment was edited by Omkar
